@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "New Tab",
   "version": "1.0.0",
-  "description": "A beautiful new tab page inspired by Momentum",
+  "description": "A simple new tab page",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

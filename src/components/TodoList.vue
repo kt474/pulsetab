@@ -10,7 +10,7 @@ interface Todo {
 
 const isOpen = ref(false);
 const newTodo = ref("");
-const todos = useLocalStorage<Todo[]>("momentum-todos", []);
+const todos = useLocalStorage<Todo[]>("todos", []);
 
 const pendingCount = computed(
   () => todos.value.filter((t) => !t.completed).length

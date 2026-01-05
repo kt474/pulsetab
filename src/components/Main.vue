@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { format } from "date-fns";
 import { useLocalStorage } from "../composables/useLocalStorage";
-import { getRandomBackground } from "../data/backgrounds";
+import { getDailyBackground } from "../data/backgrounds";
 // import Weather from "./Weather.vue";
 // import TodoList from "./TodoList.vue";
 
@@ -23,7 +23,7 @@ const greeting = computed(() => {
 });
 
 // User name (persisted)
-const userName = useLocalStorage("momentum-name", "");
+const userName = useLocalStorage("name", "");
 const isEditingName = ref(false);
 const nameInput = ref<HTMLInputElement | null>(null);
 
@@ -37,8 +37,8 @@ function saveName() {
 }
 
 // Daily focus (persisted)
-const focus = useLocalStorage("momentum-focus", "");
-const focusDate = useLocalStorage("momentum-focus-date", "");
+const focus = useLocalStorage("focus", "");
+const focusDate = useLocalStorage("date", "");
 
 // Reset focus if it's a new day
 const today = format(new Date(), "yyyy-MM-dd");
@@ -48,7 +48,7 @@ if (focusDate.value !== today) {
 }
 
 // Background image
-const backgroundUrl = ref(getRandomBackground());
+const backgroundUrl = ref(getDailyBackground());
 
 onMounted(() => {
   timeInterval = window.setInterval(() => {
