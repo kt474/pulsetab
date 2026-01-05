@@ -3,8 +3,12 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { format } from "date-fns";
 import { useLocalStorage } from "../composables/useLocalStorage";
 import { getDailyBackground } from "../data/backgrounds";
+import { getDailyQuote } from "../data/quotes";
 // import Weather from "./Weather.vue";
 // import TodoList from "./TodoList.vue";
+
+// Inspirational quote
+const quote = getDailyQuote();
 
 // Time
 const currentTime = ref(new Date());
@@ -119,5 +123,13 @@ onUnmounted(() => {
     <!-- <div class="absolute bottom-6 right-6 z-10">
       <TodoList />
     </div> -->
+
+    <!-- Inspirational Quote - Bottom Center -->
+    <div
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-center text-white max-w-2xl px-6"
+    >
+      <p class="text-lg drop-shadow-md leading-relaxed">"{{ quote.text }}"</p>
+      <p class="text-sm mt-2 opacity-80 drop-shadow-sm">{{ quote.author }}</p>
+    </div>
   </div>
 </template>
