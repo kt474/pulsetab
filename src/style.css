@@ -4,3 +4,8 @@
 @theme {
   --font-inter: "Inter", sans-serif;
 }
+
+html,
+body {
+  @apply overflow-hidden h-full m-0;
+}
