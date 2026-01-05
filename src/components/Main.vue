@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { format } from "date-fns";
 import { useLocalStorage } from "../composables/useLocalStorage";
 import { getRandomBackground } from "../data/backgrounds";
-import Weather from "./Weather.vue";
+// import Weather from "./Weather.vue";
 // import TodoList from "./TodoList.vue";
 
 // Time
@@ -72,45 +72,42 @@ onUnmounted(() => {
     ></div>
 
     <!-- Weather Widget - Top Left -->
-    <div class="absolute top-6 left-6 z-10">
+    <!-- <div class="absolute top-6 left-6 z-10">
       <Weather />
-    </div>
+    </div> -->
 
     <!-- Main Content - Center -->
     <div class="relative z-10 text-center text-white">
       <!-- Time Display -->
       <div class="flex items-baseline justify-center gap-2">
-        <span
-          class="font-orbitron text-[8rem] font-semibold leading-none drop-shadow-2xl"
-          >{{ time }}</span
-        >
-        <span class="font-inter text-3xl font-light uppercase opacity-80">{{
-          ampm
+        <span class="text-9xl font-semibold leading-none drop-shadow-2xl">{{
+          time
         }}</span>
+        <span class="text-3xl font-semibold uppercase">{{ ampm }}</span>
       </div>
 
       <!-- Date -->
-      <p class="text-xl font-normal opacity-90 mt-2 mb-8 drop-shadow-md">
+      <p class="text-2xl mb-8 drop-shadow-md font-medium">
         {{ date }}
       </p>
 
       <!-- Greeting -->
-      <h2 class="text-3xl font-normal mb-8 drop-shadow-md">
+      <h2 class="text-5xl font-medium mb-8 drop-shadow-md">
         {{ greeting }}<template v-if="userName">, </template>
         <span
           v-if="!isEditingName && userName"
           class="cursor-pointer border-b-2 border-dashed border-white/40 hover:border-white/80 transition-colors"
           @click="startEditingName"
         >
-          {{ userName }}
+          {{ userName }}.
         </span>
         <input
           v-if="isEditingName || !userName"
           ref="nameInput"
           v-model="userName"
           type="text"
-          :placeholder="userName ? '' : 'Enter your name'"
-          class="bg-transparent border-none border-b-2 border-solid border-white/60 text-white text-inherit font-inherit font-normal text-center outline-none min-w-[150px] placeholder:text-white/50"
+          class="bg-transparent border-none border-b-2 border-solid border-white/60 text-white text-inherit font-inherit font-normal text-center outline-none min-w-[150px] placeholder:text-white/50 max-w-96"
+          @focus="isEditingName = true"
           @blur="saveName"
           @keyup.enter="saveName"
         />

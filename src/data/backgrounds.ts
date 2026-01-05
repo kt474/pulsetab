@@ -8,11 +8,10 @@ export const backgrounds = [
   "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80", // Foggy mountains
   "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80", // Lake reflection
   "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1920&q=80", // Green valley
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80", // Ocean sunset
-  "https://images.unsplash.com/photo-1518173946687-a4c036bc4de4?w=1920&q=80", // Northern lights
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80", // Mountain peak
+  "https://images.unsplash.com/photo-1767288832047-7d23f6c8c26c?w=1920&q=80",
 ];
 
 export function getRandomBackground(): string {
-  return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  return backgrounds[Math.floor(Math.random() * backgrounds.length)] ?? "";
 }
