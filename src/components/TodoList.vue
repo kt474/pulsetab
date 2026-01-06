@@ -46,7 +46,7 @@ function deleteTodo(id: number) {
   <div class="relative">
     <!-- Toggle Button -->
     <button
-      class="relative w-12 h-12 rounded-full bg-black/30 backdrop-blur-lg border-none text-white cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-black/50 hover:scale-105"
+      class="relative w-10 h-10 rounded-full bg-black/30 backdrop-blur-lg border-none text-white cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-black/50 hover:scale-105"
       @click="isOpen = !isOpen"
     >
       <span class="text-xl">✓</span>

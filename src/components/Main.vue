@@ -6,6 +6,8 @@ import { getDailyBackground } from "../data/backgrounds";
 import { getDailyQuote } from "../data/quotes";
 import Weather from "./Weather.vue";
 import TodoList from "./TodoList.vue";
+import Settings from "./Settings.vue";
+import FocusTimer from "./FocusTimer.vue";
 
 // Inspirational quote
 const quote = getDailyQuote();
@@ -54,6 +56,10 @@ if (focusDate.value !== today) {
 // Background image
 const backgroundUrl = ref(getDailyBackground());
 
+// Widget visibility (persisted)
+const showWeather = useLocalStorage("showWeather", true);
+const showTodo = useLocalStorage("showTodo", true);
+
 onMounted(() => {
   timeInterval = window.setInterval(() => {
     currentTime.value = new Date();
@@ -76,8 +82,13 @@ onUnmounted(() => {
     ></div>
 
     <!-- Weather Widget - Top Left -->
-    <div class="absolute top-6 left-6 z-10">
+    <div v-if="showWeather" class="absolute top-4 left-4 z-10">
       <Weather />
+    </div>
+
+    <!-- Focus Timer - Top Right -->
+    <div class="absolute top-4 right-4 z-20">
+      <FocusTimer />
     </div>
 
     <!-- Main Content - Center -->
@@ -120,8 +131,13 @@ onUnmounted(() => {
     </div>
 
     <!-- Todo List - Bottom Right -->
-    <div class="absolute bottom-6 right-6 z-10">
+    <div v-if="showTodo" class="absolute bottom-4 right-4 z-10">
       <TodoList />
+    </div>
+
+    <!-- Settings - Bottom Left -->
+    <div class="absolute bottom-4 left-4 z-10">
+      <Settings v-model:showWeather="showWeather" v-model:showTodo="showTodo" />
     </div>
 
     <!-- Inspirational Quote - Bottom Center -->

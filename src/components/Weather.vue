@@ -131,7 +131,7 @@ onMounted(() => {
     <template v-else-if="weather">
       <span class="text-2xl">{{ weather.icon }}</span>
       <span class="text-xl font-semibold">{{ weather.temp }}°F</span>
-      <span class="text-sm opacity-80">{{ weather.location }}</span>
+      <!-- <span class="text-sm opacity-80">{{ weather.location }}</span> -->
     </template>
   </component>
 </template>
