@@ -152,7 +152,7 @@ function getDayLabel(date: Date, timeZone: string) {
           </h3>
           <button
             @click.stop="showAdd = !showAdd"
-            class="text-white hover:text-green-400 transition-colors p-1 rounded-full hover:bg-white/10"
+            class="text-white hover:text-green-400 transition-colors p-1 cursor-pointer rounded-full hover:bg-white/10"
           >
             <svg
               v-if="!showAdd"
@@ -203,7 +203,7 @@ function getDayLabel(date: Date, timeZone: string) {
             <div
               v-for="tz in filteredTimeZones.slice(0, 50)"
               :key="tz"
-              @click="addLocation(tz)"
+              @click.stop="addLocation(tz)"
               class="px-3 py-2 text-sm text-white/80 hover:bg-white/10 cursor-pointer transition-colors"
             >
               {{ tz.replace(/_/g, " ") }}
@@ -245,8 +245,8 @@ function getDayLabel(date: Date, timeZone: string) {
                 {{ formatTime(currentTime, loc.timeZone) }}
               </div>
               <button
-                @click="removeLocation(loc.id)"
-                class="opacity-0 group-hover:opacity-100 text-white/30 hover:text-red-400 transition-all p-1"
+                @click.stop="removeLocation(loc.id)"
+                class="opacity-0 cursor-pointer group-hover:opacity-100 text-white/30 hover:text-red-400 transition-all p-1"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

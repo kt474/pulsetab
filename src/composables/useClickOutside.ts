@@ -5,8 +5,11 @@ export function useClickOutside(
   callback: () => void
 ) {
   function handleClick(event: MouseEvent) {
-    if (target.value && !target.value.contains(event.target as Node)) {
-      callback();
+    if (target.value) {
+      const path = event.composedPath();
+      if (!path.includes(target.value)) {
+        callback();
+      }
     }
   }
 
