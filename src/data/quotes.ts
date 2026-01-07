@@ -97,6 +97,58 @@ const quotes: Quote[] = [
     text: "You are never too old to set another goal or to dream a new dream.",
     author: "C.S. Lewis",
   },
+  {
+    text: "Happiness depends upon ourselves.",
+    author: "Aristotle",
+  },
+  {
+    text: "The only limit to our realization of tomorrow will be our doubts of today.",
+    author: "Franklin D. Roosevelt",
+  },
+  {
+    text: "Do what you can, with what you have, where you are.",
+    author: "Theodore Roosevelt",
+  },
+  {
+    text: "It always seems impossible until it's done.",
+    author: "Nelson Mandela",
+  },
+  {
+    text: "Keep your face always toward the sunshine—and shadows will fall behind you.",
+    author: "Walt Whitman",
+  },
+  {
+    text: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
+    author: "Mother Teresa",
+  },
+  {
+    text: "The journey of a thousand miles begins with one step.",
+    author: "Lao Tzu",
+  },
+  {
+    text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+    author: "Ralph Waldo Emerson",
+  },
+  {
+    text: "Success is stumbling from failure to failure with no loss of enthusiasm.",
+    author: "Winston S. Churchill",
+  },
+  {
+    text: "Don't judge each day by the harvest you reap but by the seeds that you plant.",
+    author: "Robert Louis Stevenson",
+  },
+  {
+    text: "The power of imagination makes us infinite.",
+    author: "John Muir",
+  },
+  {
+    text: "Everything has beauty, but not everyone sees it.",
+    author: "Confucius",
+  },
+  {
+    text: "Hardships often prepare ordinary people for an extraordinary destiny.",
+    author: "C.S. Lewis",
+  },
 ];
 
 export function getDailyQuote(): Quote {
