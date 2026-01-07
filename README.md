@@ -1,5 +1,34 @@
-# Vue 3 + TypeScript + Vite
+# PulseTab
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+An elegant new tab page for Chrome.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Features
+
+- Unsplash wallpaper background
+- Inspirational quotes
+- Current weather
+- Todo list
+- Notepad
+- World clock
+- Quick links
+- Focus timer
+
+## Contributing
+
+### Getting started
+
+Fork this repository and then clone the fork. To run the project locally, you'll need Node.js and npm installed.
+
+```bash
+  git clone https://github.com/kt474/pulse-tab.git
+  cd pulse-tab
+  npm install
+  npm run dev
+```
+
+### Technologies
+
+It would also be helpful to familiarize yourself with the technologies used in this project:
+
+- Framework: Vue 3 and Typescript
+- UI: Tailwind CSS
