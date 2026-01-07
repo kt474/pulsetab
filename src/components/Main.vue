@@ -196,7 +196,7 @@ onUnmounted(() => {
     <!-- Inspirational Quote - Bottom Center -->
     <div
       v-if="showQuote"
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-center text-white max-w-2xl px-6"
+      class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center text-white max-w-2xl px-6"
     >
       <p class="text-lg drop-shadow-md leading-relaxed">"{{ quote.text }}"</p>
       <!-- <p class="text-sm mt-2 opacity-80 drop-shadow-sm">{{ quote.author }}</p> -->

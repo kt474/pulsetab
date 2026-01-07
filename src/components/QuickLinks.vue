@@ -55,10 +55,11 @@ function removeLink(id: string) {
 <template>
   <div class="flex gap-4 items-center">
     <a
-      v-for="link in links"
+      v-for="(link, index) in links"
       :key="link.id"
       :href="link.url"
       class="group relative flex flex-col items-center justify-center w-10 h-10 rounded-xl bg-black/20 backdrop-blur-md hover:bg-black/40 transition-all duration-300 hover:scale-105"
+      :class="{ 'mr-14': index === links.length - 1 }"
     >
       <img
         :src="getFavicon(link.url)"
