@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { format } from "date-fns";
 import { useLocalStorage } from "../composables/useLocalStorage";
-import { getDailyBackground } from "../data/backgrounds";
+import { getDailyBackground, refreshBackground } from "../data/backgrounds";
 import { getDailyQuote } from "../data/quotes";
 import Weather from "./Weather.vue";
 import TodoList from "./TodoList.vue";
@@ -10,6 +10,7 @@ import Settings from "./Settings.vue";
 import FocusTimer from "./FocusTimer.vue";
 import QuickLinks from "./QuickLinks.vue";
 import Notes from "./Notes.vue";
+import WorldClock from "./WorldClock.vue";
 
 // Inspirational quote
 const quote = getDailyQuote();
@@ -58,6 +59,10 @@ if (focusDate.value !== today) {
 // Background image
 const backgroundUrl = ref(getDailyBackground());
 
+function handleRefreshBackground() {
+  backgroundUrl.value = refreshBackground();
+}
+
 // Widget visibility (persisted)
 const showWeather = useLocalStorage("showWeather", true);
 const showTodo = useLocalStorage("showTodo", true);
@@ -65,6 +70,7 @@ const showQuote = useLocalStorage("showQuote", true);
 const showFocusTimer = useLocalStorage("showFocusTimer", true);
 const showQuickLinks = useLocalStorage("showQuickLinks", true);
 const showNotes = useLocalStorage("showNotes", true);
+const showWorldClock = useLocalStorage("showWorldClock", true);
 
 onMounted(() => {
   timeInterval = window.setInterval(() => {
@@ -100,6 +106,11 @@ onUnmounted(() => {
     <!-- Quick Links - Top Right (Left of Timer) -->
     <div v-if="showQuickLinks" class="absolute top-4 right-14 z-20 pr-4">
       <QuickLinks />
+    </div>
+
+    <!-- World Clock - Top Right (Left of Quick Links) -->
+    <div v-if="showWorldClock" class="absolute top-4 right-28 z-20 pr-4">
+      <WorldClock />
     </div>
 
     <!-- Main Content - Center -->
@@ -141,6 +152,28 @@ onUnmounted(() => {
       </h2>
     </div>
 
+    <!-- Background Refresh Button - Bottom Left (Above Settings) -->
+    <button
+      @click="handleRefreshBackground"
+      class="absolute bottom-4 left-18 z-20 w-10 h-10 rounded-full bg-black/30 backdrop-blur-xl text-white flex items-center justify-center transition-all duration-300 hover:bg-black/50 hover:scale-110 active:scale-95 group shadow-lg cursor-pointer"
+      title="Refresh Background"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+        />
+      </svg>
+    </button>
+
     <!-- Bottom Right Widgets (Notes & Todo) -->
     <div class="absolute bottom-4 right-4 z-10 flex gap-4 items-end">
       <Notes v-if="showNotes" />
@@ -156,6 +189,7 @@ onUnmounted(() => {
         v-model:showFocusTimer="showFocusTimer"
         v-model:showQuickLinks="showQuickLinks"
         v-model:showNotes="showNotes"
+        v-model:showWorldClock="showWorldClock"
       />
     </div>
 

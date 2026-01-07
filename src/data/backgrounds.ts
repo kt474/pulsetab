@@ -32,6 +32,32 @@ interface BackgroundStorage {
   previousPhotoId: string | null;
 }
 
+export function refreshBackground(): string {
+  const today = getToday();
+  const stored = localStorage.getItem("background");
+  let currentPhotoId = "";
+
+  if (stored) {
+    const { photoId } = JSON.parse(stored) as BackgroundStorage;
+    currentPhotoId = photoId;
+  }
+
+  const availablePhotos = photoIds.filter((id) => id !== currentPhotoId);
+  const newPhotoId =
+    availablePhotos[Math.floor(Math.random() * availablePhotos.length)];
+
+  localStorage.setItem(
+    "background",
+    JSON.stringify({
+      date: today,
+      photoId: newPhotoId,
+      previousPhotoId: currentPhotoId,
+    } as BackgroundStorage)
+  );
+
+  return `https://images.unsplash.com/photo-${newPhotoId}?w=2560&q=90`;
+}
+
 export function getDailyBackground(): string {
   const today = getToday();
   const stored = localStorage.getItem("background");
@@ -41,36 +67,10 @@ export function getDailyBackground(): string {
 
     // Same day? Return the stored background
     if (date === today) {
-      return `https://images.unsplash.com/photo-${photoId}?w=1920&q=80`;
+      return `https://images.unsplash.com/photo-${photoId}?w=2560&q=90`;
     }
-
-    // New day: pick a different photo than yesterday's
-    const availablePhotos = photoIds.filter((id) => id !== photoId);
-    const newPhotoId =
-      availablePhotos[Math.floor(Math.random() * availablePhotos.length)];
-
-    localStorage.setItem(
-      "background",
-      JSON.stringify({
-        date: today,
-        photoId: newPhotoId,
-        previousPhotoId: photoId,
-      } as BackgroundStorage)
-    );
-
-    return `https://images.unsplash.com/photo-${newPhotoId}?w=1920&q=80`;
   }
 
-  // First time: pick any random photo
-  const photoId = photoIds[Math.floor(Math.random() * photoIds.length)];
-  localStorage.setItem(
-    "background",
-    JSON.stringify({
-      date: today,
-      photoId,
-      previousPhotoId: null,
-    } as BackgroundStorage)
-  );
-
-  return `https://images.unsplash.com/photo-${photoId}?w=1920&q=80`;
+  // New day or first time: pick a new one
+  return refreshBackground();
 }

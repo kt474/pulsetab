@@ -81,7 +81,7 @@ function removeLink(id: string) {
     <div class="relative" ref="containerRef">
       <button
         @click="showAddModal = !showAddModal"
-        class="w-10 h-10 rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40 text-white hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+        class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-lg text-white flex items-center justify-center transition-all duration-200 hover:bg-black/50 hover:scale-105 cursor-pointer"
       >
         <svg
           width="20px"

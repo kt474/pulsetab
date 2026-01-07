@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue";
 
 interface WeatherData {
   temp: string;
+  feelsLike: string;
+  humidity: string;
   condition: string;
   icon: string;
   location: string;
@@ -84,6 +86,8 @@ async function fetchWeather() {
 
     weather.value = {
       temp: current.temp_F,
+      feelsLike: current.FeelsLikeF,
+      humidity: current.humidity,
       condition: current.weatherDesc[0].value,
       icon: getWeatherIcon(current.weatherDesc[0].value),
       location: location.areaName[0].value,
@@ -119,19 +123,49 @@ onMounted(() => {
         : undefined
     "
     :target="weather ? '_blank' : undefined"
-    class="flex items-center gap-2 px-4 py-3 bg-black/30 backdrop-blur-lg rounded-2xl text-white font-inter"
-    :class="{ 'hover:bg-black/40 transition-colors cursor-pointer': weather }"
+    class="group flex items-center gap-3 px-4 py-3 bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl text-white font-inter"
+    :class="{
+      'hover:bg-black/50 hover:border-white/20 transition-all duration-300 cursor-pointer hover:scale-105':
+        weather,
+    }"
   >
     <template v-if="loading">
-      <span class="text-sm opacity-70">Loading...</span>
+      <div class="flex items-center gap-2">
+        <div
+          class="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"
+        ></div>
+        <span class="text-xs font-medium opacity-70">Loading...</span>
+      </div>
     </template>
     <template v-else-if="error">
-      <span class="text-sm opacity-70">⚠️</span>
+      <span class="text-sm opacity-70">Weather unavailable</span>
     </template>
     <template v-else-if="weather">
-      <span class="text-2xl">{{ weather.icon }}</span>
-      <span class="text-xl font-semibold">{{ weather.temp }}°F</span>
-      <!-- <span class="text-sm opacity-80">{{ weather.location }}</span> -->
+      <span
+        class="text-3xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+        >{{ weather.icon }}</span
+      >
+      <div class="flex flex-col">
+        <span class="text-xl font-bold leading-none">{{ weather.temp }}°</span>
+        <span
+          class="text-[10px] font-medium opacity-60 uppercase tracking-tight mt-1"
+          >{{ weather.condition }}</span
+        >
+      </div>
+
+      <!-- Detailed info on hover -->
+      <div
+        class="flex items-center gap-4 overflow-hidden w-0 opacity-0 group-hover:w-auto group-hover:opacity-100 transition-all duration-500 ease-in-out border-l border-white/20 ml-2 pl-4"
+      >
+        <div class="flex flex-col">
+          <span class="text-[10px] opacity-60 uppercase">Feels</span>
+          <span class="text-xs font-semibold">{{ weather.feelsLike }}°</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[10px] opacity-60 uppercase">Humidity</span>
+          <span class="text-xs font-semibold">{{ weather.humidity }}%</span>
+        </div>
+      </div>
     </template>
   </component>
 </template>
