@@ -118,19 +118,19 @@ onUnmounted(() => {
       <!-- Time Display -->
       <div class="flex items-baseline justify-center gap-2">
         <span
-          class="text-[9.5rem] font-semibold leading-none drop-shadow-2xl"
+          class="text-[6rem] sm:text-[9.5rem] font-semibold leading-none drop-shadow-2xl"
           >{{ time }}</span
         >
         <span class="text-3xl font-semibold uppercase">{{ ampm }}</span>
       </div>
 
       <!-- Date -->
-      <p class="text-2xl mb-8 drop-shadow-md font-medium">
+      <p class="text-lg sm:text-2xl mb-8 drop-shadow-md font-medium">
         {{ date }}
       </p>
 
       <!-- Greeting -->
-      <h2 class="text-4xl font-medium mb-8 drop-shadow-md">
+      <h2 class="text-2xl sm:text-4xl font-medium mb-8 drop-shadow-md">
         {{ greeting }}<template v-if="userName">, </template>
         <span
           v-if="!isEditingName && userName"
@@ -198,7 +198,9 @@ onUnmounted(() => {
       v-if="showQuote"
       class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center text-white max-w-2xl px-6"
     >
-      <p class="text-lg drop-shadow-md leading-relaxed">"{{ quote.text }}"</p>
+      <p class="text-base sm:text-lg drop-shadow-md leading-relaxed">
+        "{{ quote.text }}"
+      </p>
       <!-- <p class="text-sm mt-2 opacity-80 drop-shadow-sm">{{ quote.author }}</p> -->
     </div>
   </div>
