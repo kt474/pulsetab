@@ -293,7 +293,7 @@ onUnmounted(() => {
             </h3>
 
             <div class="space-y-4 text-white">
-              <p class="font-semibold">
+              <p class="font-semibold text-base">
                 Current background:
                 <a
                   class="font-normal text-blue-500"
