@@ -1,6 +1,6 @@
 # PulseTab
 
-An elegant new tab page for Chrome.
+An elegant New Tab page for Chrome.
 
 ![homepage](./public/homepage.webp)
 

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "PulseTab",
   "version": "1.0.0",
-  "description": "An elegant new tab page for Chrome",
+  "description": "An elegant New Tab page for Chrome",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
