@@ -12,6 +12,6 @@
     "48": "icon-48.png",
     "128": "icon-128.png"
   },
-  "permissions": ["geolocation", "storage"],
+  "permissions": [],
   "host_permissions": ["https://wttr.in/*", "https://images.unsplash.com/*"]
 }

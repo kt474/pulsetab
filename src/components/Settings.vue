@@ -305,14 +305,14 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div v-if="activeTab === 'about'" class="space-y-6">
+          <div v-if="activeTab === 'about'" class="space-y-4">
             <h3
               class="text-white text-sm font-medium mb-4 opacity-60 uppercase tracking-wider"
             >
               About
             </h3>
 
-            <div class="space-y-4">
+            <div class="">
               <div class="p-3 bg-white/5 rounded-2xl border border-white/5">
                 <p class="text-white/80 text-sm leading-relaxed">
                   PulseTab is an open source chrome extension that replaces the
@@ -324,6 +324,13 @@ onUnmounted(() => {
                     target="_blank"
                     >GitHub repository</a
                   >.
+                </p>
+              </div>
+            </div>
+            <div>
+              <div class="p-3 bg-white/5 rounded-2xl border border-white/5">
+                <p class="text-white/80 text-sm leading-relaxed">
+                  Available on the Chrome Web Store.
                 </p>
               </div>
             </div>
