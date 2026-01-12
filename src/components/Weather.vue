@@ -147,9 +147,6 @@ onMounted(() => {
   >
     <template v-if="loading">
       <div class="flex items-center gap-2">
-        <div
-          class="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"
-        ></div>
         <span class="text-xs font-medium opacity-70">Loading...</span>
       </div>
     </template>

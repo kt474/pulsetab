@@ -330,7 +330,13 @@ onUnmounted(() => {
             <div>
               <div class="p-3 bg-white/5 rounded-2xl border border-white/5">
                 <p class="text-white/80 text-sm leading-relaxed">
-                  Available on the Chrome Web Store.
+                  Available on the
+                  <a
+                    href="https://chromewebstore.google.com/detail/pulsetab/lgaagbnphbmglakbgdlpibeaklfkgaln"
+                    class="text-blue-500 font-medium"
+                    target="_blank"
+                    >Chrome Web Store</a
+                  >.
                 </p>
               </div>
             </div>
